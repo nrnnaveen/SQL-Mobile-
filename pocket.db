@@ -1,0 +1,25 @@
+import sqlite3
+
+conn = sqlite3.connect("database/pocket.db")
+
+cur = conn.cursor()
+
+cur.execute("""
+CREATE TABLE users(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT,
+email TEXT
+)
+""")
+
+cur.execute("""
+INSERT INTO users(name,email)
+VALUES
+('Alice','alice@mail.com'),
+('Bob','bob@mail.com')
+""")
+
+conn.commit()
+conn.close()
+
+print("Database created")
